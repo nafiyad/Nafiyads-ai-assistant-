@@ -279,6 +279,54 @@
         .toggle-button:hover {
             transform: rotate(180deg);
         }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .message {
+                max-width: 90%;
+            }
+
+            .input-container {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            button {
+                margin-top: 10px;
+                padding: 10px;
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .message {
+                padding: 10px 15px;
+                border-radius: 15px;
+            }
+
+            button {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .toggle-button {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -295,8 +343,7 @@
     <button class="toggle-button" onclick="toggleTheme()"><i class="fas fa-adjust"></i></button>
 
     <script>
-        const endpointUrl = 'https://api.openai.com/v1/chat/completions';
-        const apiKey = 'sk-proj-VtB6lBBrPTyZusC4Fq2qT3BlbkFJVEOrYkGzsEy0vIWBFwSM'; // Replace with your actual API key
+        const endpointUrl = '/api/chat'; // Update to use the proxy server
 
         const initialMessages = [
             {
@@ -333,12 +380,11 @@
             userInput.value = '';
             showLoading();
 
-            // Make API request to OpenAI
+            // Make API request to the proxy server
             fetch(endpointUrl, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${apiKey}`
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
                     model: 'gpt-3.5-turbo',
