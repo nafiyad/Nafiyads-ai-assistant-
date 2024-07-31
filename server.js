@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-const OPENAI_API_KEY = 'your-openai-api-key'; // Replace with your actual API key
+const OPENAI_API_KEY = 'sk-proj-VtB6lBBrPTyZusC4Fq2qT3BlbkFJVEOrYkGzsEy0vIWBFwSM'; // Replace with your actual API key
 
 app.post('/api/chat', async (req, res) => {
     try {
@@ -26,4 +26,3 @@ app.post('/api/chat', async (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
-
